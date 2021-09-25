@@ -25,6 +25,7 @@ class ReadmeTerminal extends Controller
         $user = new stdClass();
         $user->username = htmlspecialchars($request->input('username'));
         $user->about = htmlspecialchars($request->input('about'));
+        $user->bgcolor = htmlspecialchars($request->input('bgcolor'));
 
         return view('terminal', compact('user', $user));
     }

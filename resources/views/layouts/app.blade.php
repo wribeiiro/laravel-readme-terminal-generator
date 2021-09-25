@@ -19,12 +19,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="{{ Route::currentRouteName() === 'home' ? 'bg-gray' : ''}}">
     <div id="app">
         @if (Route::currentRouteName() !== 'render.terminal')
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-light text-white shadow-sm navbar-black">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand text-white" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel Readme Terminal Generator') }}
                     </a>
                     
@@ -35,7 +35,7 @@
             </nav>
         @endif
 
-        <main class="py-4">
+        <main class="py-4" id="exportBody">
             @yield('content')
         </main>
     </div>

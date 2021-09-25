@@ -17,20 +17,6 @@ body {
 	overflow-x: hidden;
 }
 
-:root {
-    --black: #121214;
-    --dark-gray: #212025;
-    --white: #FFFFFF;
-    --text: #E1E1E6;
-    --purple: #9466FF;
-    --vue: #04D361;
-    --red: #ec5453;
-    --npurple: #373238;
-    --yellow: #f9bf3f;
-    --synth-purple: #F222FF;
-    --synth-blue: #011EFE;
-}
-
 .text-center {
     text-align: center;
 }
@@ -128,7 +114,7 @@ body {
     width: 14px;
     height: 14px;
     display: inline-block;
-    border-radius: 15px;
+    border-radius: 50%;
     margin-left: 7px;
     border-width: 1px;
     border-style: solid;
@@ -161,12 +147,17 @@ body {
         </div>
     </div>
 
-    <script src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
     <script>
         const user = '{{$user->username}}'
         const about = '{{$user->about}}'
+        const bgcolor = '{{$user->bgcolor}}'
 
         document.addEventListener("DOMContentLoaded", (event) => {
+            document.getElementById('export').setAttribute('disabled', true);
+
+            document.body.style.backgroundColor = bgcolor;
+            document.getElementById('exportBody').style.backgroundColor = bgcolor;
             
             const userRoot = `${user}@${user}:~$ <span class="text-text">sudo --help aboutme<br>`;
             const userRootBlink = `${user}@${user}:~$ <span class="blink">_</span>`;
@@ -174,17 +165,20 @@ body {
 
             setTimeout(() => {
                 document.getElementById('aboutText').innerHTML = userRoot + aboutMe + userRootBlink;
-            }, 2000)
+                document.getElementById('export').removeAttribute('disabled');
+            }, 2000);
         })
 
         document.getElementById("export").addEventListener('click', function(e) {
             e.preventDefault();
+            document.getElementById("export").style.display = 'none';
 
-            html2canvas(document.getElementById("terminal"), {
-                onrendered: function(canvas) {
-                    window.open(canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream"))
-                }
+            html2canvas(document.getElementById("exportBody"))
+            .then(canvas => {
+                window.open(canvas.toDataURL());
             });
+
+            setTimeout(() => document.getElementById("export").style.display = 'inline-block', 1000);
         });
         
     </script>

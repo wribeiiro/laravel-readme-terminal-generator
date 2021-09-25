@@ -10,7 +10,8 @@ class ReadmeFormValidation extends AbstractValidation
     {
         return self::validate($data, [
             'username' => 'required',
-            'about' => 'required'
+            'about' => 'required',
+            'bgcolor' => 'required',
         ]);
     }
 }

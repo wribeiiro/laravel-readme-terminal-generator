@@ -6,3 +6,61 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+:root {
+    --black: #121214;
+    --dark-gray: #212025;
+    --white: #FFFFFF;
+    --text: #E1E1E6;
+    --purple: #7159C1;
+    --vue: #04D361;
+    --red: #ec5453;
+    --npurple: #373238;
+    --yellow: #f9bf3f;
+    --synth-purple: #F222FF;
+    --synth-blue: #011EFE;
+}
+
+input[type=text],
+textarea {
+    background-color: var(--dark-gray) !important;
+    color: var(--white) !important;
+    border: solid 3px var(--purple) !important;;
+}
+
+.navbar-purple {
+    background-color: var(--purple) !important;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: solid 3px var(--purple);
+}
+
+.bg-gray {
+    background-color: var(--dark-gray);
+}
+
+.navbar-black {
+    background-color: var(--black);
+}
+
+.btn-purple {
+    background-color: var(--purple);
+    border: solid 3px var(--purple);
+    color: var(--white);
+    font-size: 1.0rem;
+}
+
+.btn-purple:hover {
+    background-color: var(--purple);
+    border: solid 3px var(--purple);
+    color: var(--white);
+}
+
+
+label {
+    font-size: 1.0rem;
+}
