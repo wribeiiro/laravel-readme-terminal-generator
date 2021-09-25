@@ -130,9 +130,9 @@ body {
     <div class="terminal" id="terminal">
         <div class="terminal-bar">
             <div class="btns">
-                <span class="circle red"></span>
                 <span class="circle yellow"></span>
                 <span class="circle green"></span>
+                <span class="circle red"></span>
             </div>
             <div class="terminal-title">{{$user->username . '@' . $user->username}}: ~</div>
         </div>
